@@ -17,27 +17,3 @@ Dua algoritma yang digunakan untuk membangun model prediktif:
 - `XGBRegressor` dari XGBoost
 
 Keduanya melalui proses **hyperparameter tuning** menggunakan `RandomizedSearchCV`.
-
-## 🔧 Hyperparameter Tuning (Contoh Sintaks)
-
-```python
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import RandomizedSearchCV
-
-rf = RandomForestRegressor()
-param_dist = {
-    'n_estimators': [100, 200, 300],
-    'max_depth': [10, 20, 30, None],
-    'min_samples_split': [2, 5, 10]
-}
-
-rf_random = RandomizedSearchCV(
-    estimator=rf,
-    param_distributions=param_dist,
-    n_iter=10,
-    cv=3,
-    verbose=2,
-    n_jobs=-1
-)
-
-rf_random.fit(X_train, y_train)
